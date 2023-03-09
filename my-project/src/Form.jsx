@@ -1,32 +1,4 @@
-import { useState } from "react";
-
-export default function Form({ catchName, sendName, catchNumber, sendNumber }) {
-
-    // let cardInfos = {}
-
-    // function handleClick(e) {
-    //
-    //     cardInfos.cardName = document.querySelector('.cardName')
-    //     cardInfos.cardNumber = document.querySelector('.cardNumber15')
-    //     cardInfos.cardExpDateMM = document.querySelector('.cardExpDateMM')
-    //     cardInfos.cardExpDateYY = document.querySelector('.cardExpDateYY')
-    //     cardInfos.cvc = document.querySelector('.cvcThis')
-    //
-    //     let numberFormater = cardInfos.cardNumber.value.match(/.{1,4}/g).join(" ")
-    //     console.log(numberFormater)
-    //
-    //     e.preventDefault()
-    //
-        // const mapCardInfos = {
-        //     cardName: cardInfos.cardName.value,
-        //     cardNumber: numberFormater,
-        //     cardExpDateMM: cardInfos.cardExpDateMM.value,
-        //     cardExpDateYY: cardInfos.cardExpDateYY.value,
-        //     cvc: cardInfos.cvc.value
-        // }
-    //
-    //     onChanges(mapCardInfos)
-    // }
+export default function Form({ catchName, sendName, catchNumber, sendNumber, catchDateMM, sendDateMM, catchDateYY, sendDateYY, catchCvc, sendCvc }) {
 
     function handleClick(e) {
         e.preventDefault()
@@ -47,14 +19,14 @@ export default function Form({ catchName, sendName, catchNumber, sendNumber }) {
                 <label className="flex flex-col">
                     EXP. DATE (MM/YY)
                     <div className="flex gap-5">
-                        <input className="cardExpDateMM border-[1px] border-gray-300 w-[4rem] rounded-[.5rem] p-2 w-[100%]" type="text" placeholder="MM" maxLength='2'/>
-                        <input className="cardExpDateYY border-[1px] border-gray-300 w-[4rem] rounded-[.5rem] p-2 w-[100%]" type="text" placeholder="YY" maxLength='2'/>
+                        <input value={sendDateMM} onChange={(e) => catchDateMM(e.target.value)} className="cardExpDateMM border-[1px] border-gray-300 w-[4rem] rounded-[.5rem] p-2 w-[100%]" type="text" placeholder="MM" maxLength='2'/>
+                        <input value={sendDateYY} onChange={(e) => catchDateYY(e.target.value)} className="cardExpDateYY border-[1px] border-gray-300 w-[4rem] rounded-[.5rem] p-2 w-[100%]" type="text" placeholder="YY" maxLength='2'/>
                     </div>
                 </label>
 
                 <label className="flex flex-col w-[100%]">
                     CVC
-                    <input className="cvcThis border-gray-300 border-[1px] rounded-[.5rem] p-2 w-[100%]" type="text" placeholder="Ex. 123" maxLength='3'/>
+                    <input value={sendCvc} onChange={(e) => catchCvc(e.target.value)} className="cvcThis border-gray-300 border-[1px] rounded-[.5rem] p-2 w-[100%]" type="text" placeholder="Ex. 123" maxLength='3'/>
                 </label>
             </div>
 
